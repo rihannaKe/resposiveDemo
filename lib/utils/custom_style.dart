@@ -25,10 +25,22 @@ class CustomColors {
 class CustomStyle {
   static const the_font_family = 'Dancing script';
 
+  static const bkg_decoration = BoxDecoration(
+      gradient:
+          LinearGradient(colors: [CustomColors.white1, CustomColors.white2]));
+
   static const menu_links = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Dancing script',
+    fontFamily: the_font_family,
+  );
+
+  static const menu_links_hover = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+    fontFamily: the_font_family,
+    color: CustomColors.purple2,
+    decoration: TextDecoration.underline,
   );
 
   static const main_title = TextStyle(
@@ -49,5 +61,11 @@ class CustomStyle {
     fontFamily: the_font_family,
     fontWeight: FontWeight.bold,
     color: Colors.purple,
+  );
+
+  static const subscribe_text = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    fontFamily: the_font_family,
   );
 }

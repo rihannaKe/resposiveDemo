@@ -11,7 +11,9 @@ class SocialLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(AppText.follow_us, style: CustomStyle.main_sub_subtitle),
+        FittedBox(
+            child:
+                Text(AppText.follow_us, style: CustomStyle.main_sub_subtitle)),
         FittedBox(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

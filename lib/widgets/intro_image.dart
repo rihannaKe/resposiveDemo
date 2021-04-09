@@ -6,6 +6,9 @@ class IntroImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String backgroundImage = "assets/img/logo_flutterista.png";
-    return Image.asset(backgroundImage);
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Image.asset(backgroundImage),
+    );
   }
 }

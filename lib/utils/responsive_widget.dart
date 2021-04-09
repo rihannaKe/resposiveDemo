@@ -31,11 +31,11 @@ class ResponsiveWidget extends StatelessWidget {
   }
 
   static bool isSmallScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width <= _smallBreakPoint;
+    return MediaQuery.of(context).size.width < _smallBreakPoint;
   }
 
   static bool isMediumScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width > _smallBreakPoint &&
+    return MediaQuery.of(context).size.width >= _smallBreakPoint &&
         MediaQuery.of(context).size.width < _mediumBreakPoint;
   }
 }

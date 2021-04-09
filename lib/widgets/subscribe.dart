@@ -14,10 +14,7 @@ class SubscribeWidget extends StatelessWidget {
         FittedBox(
           child: Text(
             AppText.subscribeText,
-            style: TextStyle(
-                fontFamily: 'Dancing script',
-                fontSize: 30,
-                fontWeight: FontWeight.bold),
+            style: CustomStyle.subscribe_text,
           ),
         ),
         _EmailBox()
@@ -26,7 +23,38 @@ class SubscribeWidget extends StatelessWidget {
   }
 }
 
-class SubscribeButton extends StatelessWidget {
+class _EmailBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: CustomColors.white1,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black12, offset: Offset(0, 8), blurRadius: 8)
+          ]),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              flex: 7,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: InputBorder.none, hintText: AppText.email_hint),
+              ),
+            ),
+            Expanded(flex: 3, child: _SubscribeButton())
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SubscribeButton extends StatelessWidget {
   String emailImage = "assets/img/email.png";
 
   @override
@@ -49,16 +77,13 @@ class SubscribeButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => _buildPopupDialog(context),
-              );
-            },
-            child: Center(
-              child: buildButton(context),
-            ),
-          ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildPopupDialog(context),
+                );
+              },
+              child: buildButton(context)),
         ),
       ),
     );
@@ -66,12 +91,12 @@ class SubscribeButton extends StatelessWidget {
 
   Widget buildButton(BuildContext context) {
     if (ResponsiveWidget.isSmallScreen(context))
-      return buildSmallButton(context);
+      return _buildSmallButton(context);
     else
-      return buildLargeButton(context);
+      return _buildLargeButton(context);
   }
 
-  Widget buildLargeButton(BuildContext context) {
+  Widget _buildLargeButton(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -87,7 +112,7 @@ class SubscribeButton extends StatelessWidget {
     );
   }
 
-  Widget buildSmallButton(BuildContext context) {
+  Widget _buildSmallButton(BuildContext context) {
     return FittedBox(
       fit: BoxFit.contain,
       child: Image.asset(
@@ -108,7 +133,10 @@ class SubscribeButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(AppText.suscribeConfirm),
+                Text(
+                  AppText.suscribeConfirm,
+                  style: CustomStyle.subscribe_text,
+                ),
               ],
             ),
           );
@@ -119,43 +147,9 @@ class SubscribeButton extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('Close'),
+          child: Text('Close', style: CustomStyle.menu_links),
         ),
       ],
-    );
-  }
-}
-
-class _EmailBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 4.0, right: 60, top: 10, bottom: 40),
-      child: Container(
-        decoration: BoxDecoration(
-            color: CustomColors.white1,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black12, offset: Offset(0, 8), blurRadius: 8)
-            ]),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Expanded(
-                flex: 7,
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: AppText.email_hint),
-                ),
-              ),
-              Expanded(flex: 3, child: SubscribeButton())
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

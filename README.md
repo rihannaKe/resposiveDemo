@@ -1,5 +1,5 @@
 # Responsive demo
 
-
 ## Getting Started
-This is a demo wiht repsonsive landing page
+
+This is a reasponsive demo code for showcasing how to build a simple responsive landing page.
